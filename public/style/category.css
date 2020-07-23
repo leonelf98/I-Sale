@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: white;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr repeat(12, minmax(auto, 60px)) 1fr;
+    grid-gap: 40px;
+    padding: 60px 0;
+    color: white;
+}
+
+.ir {
+    color: white;
+}
+
+.category-title {
+    background-color: rgb(30, 44, 56);
+    font-size: 50px;
+    margin: 20px;
+    border-radius: 20px;
+}
+
+.category-title h1 {
+    padding-left: 100px;
+    color: white;
+}
+
+.cards {
+    grid-column: 2/ span 12;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(auto, 60px));
+    grid-gap: 40px;
+}
+
+.card {
+    border-radius: 20px;
+    grid-column-end: span 4;
+    display: flex;
+    flex-direction: column;
+    background-color: #39393b;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.vendor {
+    color: white;
+}
+
+.vendor:hover {
+    color: teal;
+}
+
+.card__image-container {
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    padding-top: 56.25%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card__image-container img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.card__content {
+    padding: 20px;
+}
+
+.card__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.card__info {
+    display: flex;
+    align-self: end;
+    align-items: center;
+}
+
+.card__price {
+    margin-left: auto;
+    padding: 10px;
+    vertical-align: middle;
+    background-color: #303032;
+    border-radius: 20px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .card {
+        grid-column-end: span 6;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    main {
+        grid-gap: 20px;
+    }
+
+    .card {
+        grid-column-end: span 12;
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    main {
+        grid-template-columns: 10px repeat(6, ifr) 10px;
+        grid-gap: 20px;
+    }
+
+    .cards {
+        grid-column: 2/span 6;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 20px;
+    }
+
+    .card {
+        grid-column-end: span 12;
+    }
+}

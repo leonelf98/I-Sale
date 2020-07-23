@@ -1,0 +1,31 @@
+<%- include ('header'); %>
+
+<div class="container" style="padding: 40px;">
+    <form action="/login2" method="POST">
+        <h3 style="color: white;"> -</h3>
+        <div class="form-row" style="text-align: center;">
+            <h4>Introduzca su correo y contraseña para ingresar</h4>
+        </div><br>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Correo</label>
+                <input type="text" name="email" class="form-control" id="inputEmail4" placeholder="ejemplo@correo.com" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputCity">Contraseña</label>
+                <input type="password" name="password" class="form-control" id="inputCity" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <a href=""><label>¿Has olvidado la contraseña?</label></a><br>
+                <a href="Registro"><label>¿Aún no tienes una cuenta? Registrate AQUI.</label></a>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+
+</div>
+<%- include ('footer') %>

@@ -1,0 +1,26 @@
+<%- include ('header', {session}); %>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Page Heading/Breadcrumbs -->
+      <h1 class="mt-4 mb-3"><%= error %>/
+        <small><%= msg %></small>
+      </h1>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/">Incio</a>
+        </li>
+        <li class="breadcrumb-item active">ERROR</li>
+      </ol>
+
+      <div class="jumbotron">
+        <img src="images/404.jpg" alt="Error 404" style="width:100%;">
+
+        </div>
+      <!-- /.jumbotron -->
+
+    </div>
+    <!-- /.container -->
+<%- include ('footer') %>

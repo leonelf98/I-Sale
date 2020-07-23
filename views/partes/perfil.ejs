@@ -1,0 +1,80 @@
+<%- include ('header', {session}); %>
+<br><br>
+<div class="card-pro">
+    <div class="card-header">
+        <img class="profile-img" src="subidas/<%= session.file %>" alt="elon"><!--"<%= session.avatar %>"-->
+    </div>
+
+    <div class="card-body">
+        <p class="full-name"><%= session.nombre %> <%= session.apellido %></p>
+        <p class="username">correo: <%= session.email %></p>
+        <p >Teléfono: <strong><%= session.telefono %></strong></p>
+        <p class="desc">Descripción: <br><%= session.desc %></p>
+    </div>
+
+    <div class="card-footer">
+        <div class="col2">
+            <p><span class="count">10</span> Reviews</p>
+        </div>
+        <div class="col2">
+            <p><span class="count">3</span> Trabajos</p>
+        </div>
+    </div>
+</div>
+
+<main>
+    <section class="cards">
+        <div class="card">
+            <div class="card__image-container">
+                <img src="img/reparar.jpeg" alt="mountain">
+            </div>
+            <div class="card__content">
+                <p class="card__title text--medium">
+                    <a class="ir" href="/trabajo.html">
+                        <strong>Reparo autos electricos</strong>
+                    </a>
+                </p>
+                <div class="card__info">
+                    <a href="#" class="vendor">Elon Musk</a>
+                    <p class="card__price text--medium">San Miguelito</p>
+                    <p class="card__price text--medium">Capital</p>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card__image-container">
+                <img src="img/mars.jpeg" alt="mountain">
+            </div>
+            <div class="card__content">
+                <p class="card__title text--medium">
+                    <strong>Viajes familiares a marte</strong>
+                </p>
+                <div class="card__info">
+                    <a href="#" class="vendor">Elon Musk</a>
+                    <p class="card__price text--medium">San Miguelito</p>
+                    <p class="card__price text--medium">Capital</p>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card__image-container">
+                <img src="img/solar.jpg" alt="mountain">
+            </div>
+            <div class="card__content">
+                <p class="card__title text--medium">
+                    <strong>Paneles solares</strong>
+                </p>
+                <div class="card__info">
+                    <a href="#" class="vendor">Elon Musk</a>
+                    <p class="card__price text--medium">San Miguelito</p>
+                    <p class="card__price text--medium">Capital</p>
+                </div>
+                <br>
+            </div>
+        </div>
+
+    </section>
+</main>
+<%- include ('footer') %>

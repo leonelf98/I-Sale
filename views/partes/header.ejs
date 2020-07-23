@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" />
+
+	<title>Home</title>
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/category.css">
+    <link rel="stylesheet" href="style/perfil.css">
+    <!-- Custom styles for this template -->
+    <link href="css/modern-business.css" rel="stylesheet">
+	<link href="public/css/lel.css" rel="stylesheet">
+    <style>
+    .avatar {
+      vertical-align: middle;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+    }
+    </style>
+	<!-- Bootstrap core CSS -->
+
+	<!-- Additional CSS Files -->
+	<link rel="stylesheet" href="assets/css/fontawesome.css" />
+	<link rel="stylesheet" href="assets/css/tooplate-main.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+
+    <link rel="stylesheet" href="style/category.css">
+</head>
+
+<body>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<header>
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-Blue">
+      <a class="navbar-brand" href="#"><img src="images/Logo_nameBlka.png" alt="logo" style="width:80px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Categoria
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="category">Mecanica</a>
+                      <a class="dropdown-item" href="category">Lavanderia</a>
+                      <a class="dropdown-item" href="category">Plomeria</a>
+                  </div>
+              </li>
+              <form class="form-inline">
+                  <input class="form-control mr-sm-2" type="Busqueda" placeholder="Busqueda" aria-label="Search">
+              </form>
+          </ul>
+          <% if (session) { %>
+          <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <img alt="Avatar" class="avatar" src="subidas/<%= session.file %>">
+            </li>
+              <li class="nav-item dropdown">
+
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= session.nombre %> <%= session.apellido %>
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="Perfil">Ver</a>
+                      <a class="dropdown-item" href="Conf">Configurar</a>
+                      <a class="dropdown-item" href="logout">Logout</a>
+                  </div>
+              </li>
+          </ul>
+          <% } else { %>
+          <form class="form-inline my-2 my-lg-0">
+              <form class="form-inline">
+                  <a class="btn btn-light" href="Login">Login</a>
+              </form>
+          </form>
+          <% } %>
+      </div>
+  </nav>
+  <hr>
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark ">
+    <a class="navbar-brand" href="/">Inicio</a>
+    <a class="navbar-brand" href="Trabajos">Trabajos</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categoria
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="category">Mecanica</a>
+                    <a class="dropdown-item" href="category">Lavanderia</a>
+                    <a class="dropdown-item" href="category">Plomeria</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+  </nav>
+</header>

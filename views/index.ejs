@@ -1,0 +1,92 @@
+<%- include ('partes/header', {session}); %>
+
+
+<!-- Page Content -->
+	<!-- Banner Starts Here -->
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="caption">
+						<h2>Bienvenidos a iWork</h2>
+						<div class="line-dec"></div>
+						<p>
+							En esta plataforma pueden contratar servicios de múltiples áreas y profesiones. Tambien
+							podras publicar trabajos bajo las categorías que tenemos establecidas y las personas podrán
+							verte y contratarte.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Banner Ends Here -->
+
+	<!-- Featured Starts Here -->
+	<div class="featured-items">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-heading">
+						<div class="line-dec"></div>
+						<h1>Top categorias</h1>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="owl-carousel owl-theme">
+						<a href="#">
+							<div class="featured-item">
+								<img src="assets/images/computadora.jpeg" alt="Item 1" />
+								<h4>Computadoras</h4>
+							</div>
+						</a>
+						<a href="#">
+							<div class="featured-item">
+								<img src="assets/images/cars.jpeg" alt="Item 2" />
+								<h4>Autos</h4>
+							</div>
+						</a>
+						<a href="category">
+							<div class="featured-item">
+								<img src="assets/images/electricity.jpeg" alt="Item 3" />
+								<h4>Electricidad</h4>
+							</div>
+						</a>
+						<a href="#">
+							<div class="featured-item">
+								<img src="assets/images/costura.jpeg" alt="Item 4" />
+								<h4>Costura</h4>
+							</div>
+						</a>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Featred Ends Here -->
+
+	<!-- Bootstrap core JavaScript -->
+
+
+	<!-- Additional Scripts -->
+	<script src="assets/js/custom.js"></script>
+	<script src="assets/js/owl.js"></script>
+
+	<script language="text/Javascript">
+		cleared[0] = cleared[1] = cleared[2] = 0 //set a cleared flag for each field
+		function clearField(t) {
+			//declaring the array outside of the
+			if (!cleared[t.id]) {
+				// function makes it static and global
+				cleared[t.id] = 1 // you could use true and false, but that's more typing
+				t.value = '' // with more chance of typos
+				t.style.color = '#fff'
+			}
+		}
+	</script>
+
+
+<%- include ('partes/footer') %>
