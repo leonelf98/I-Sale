@@ -3,17 +3,21 @@ const express = require('express');
   /*  ejs = require('ejs'),
     cookieParser = require('cookie-parser');*/
 const app = express();
-//const router = express.Router();
 const session = require('express-session');
 const morgan = require('morgan');
 const multer = require('multer');//PARA MANEJAR LOS ARCHIVOS
 const mongoose = require('./models/connection'); // importa el archivo de conexión
-const Usuario = require('./models/user'); // importa el esquema
+const faker  = require('faker');
 const MongoStore = require('connect-mongo')(session);
 const MONGO_URL = 'mongodb://localhost/testDB';
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const passportConfig = require('./config/passport');
+
+
+
+const Usuario = require('./models/user'); // importa el esquema
+const Work = require('./models/work'); // importa el esquema
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -171,6 +175,47 @@ app.get('/Perfil_autor', function(req, res){
 });
 
 //MUESTRA LAS OFERTAS POR CATEGORIAS
+
+app.get('/Category/:page', (req, res) => {
+  let perPage = 9;
+  let page = req.params.page || 1;
+  var session = req.user;
+  Work
+    .find({}) // finding all documents
+    .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+    .limit(perPage) // output just 9 items
+    .exec((err, works) => {
+      Work.count((err, count) => { // count to calculate the number of pages
+        if (err) return next(err);
+        res.render('partes/category', {
+          session,
+          works,
+          current: page,
+          pages: Math.ceil(count / perPage)
+        });
+      });
+    });
+});
+
+app.get('/fakedata', (req, res, next) => {
+  for(let i = 0; i < 90; i++) {
+    const work = new Work();
+    work.emailUser = faker.internet.email();
+    work.tituloTrabajo = faker.commerce.productName();
+    work.categoria = faker.commerce.productName();
+    work.lugar = faker.commerce.productName();
+    work.fecha = faker.date.past();
+    work.cedula = faker.commerce.productName();
+    work.clasificacion = faker.commerce.productName();
+    work.cover = faker.image.image();
+    work.save(err => {
+      if (err) { return next(err); }
+    });
+  }
+  res.redirect('/');
+});
+
+/*
 app.get('/Category', function(req, res){
     res.type('text/html');
     var session = req.user;
@@ -179,7 +224,7 @@ app.get('/Category', function(req, res){
         if(err) throw err;
         res.send(html);
     });
-});
+});*/
 
 
 //Error 404

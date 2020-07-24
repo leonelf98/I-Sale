@@ -1,117 +1,96 @@
-<%- include ('header', {session}); %>
-   <div class="category-title">
-    <h1 class="title">Electricidad</h1>
+<%- include ('../partes/header', {session}); %>
+
+<div class="category-title">
+ <h1 class="title">Electricidad</h1>
 </div>
+
+
 <main>
-    <section class="cards">
+
+  <section class="cards">
+        <% for(var i = 0; i < works.length; i++) { %>
         <div class="card">
             <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
+                <img src="<%= works[i].cover %>" alt="mountain">
             </div>
             <div class="card__content">
                 <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
+                    <a href="../trabajos" class="ir">
+                        <strong><%= works[i].tituloTrabajo %></strong>
                     </a>
                 </p>
                 <div class="card__info">
-                    <a href="perfil.html" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
+                    <a href="perfil.html" class="vendor"><%= works[i].emailUser %></a>
+                    <p class="card__price text--medium"><%= works[i].lugar %></p>
+                    <p class="card__price text--medium"><%= works[i].lugar %></p>
                 </div>
                 <br>
             </div>
         </div>
-        <div class="card">
-            <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
-            </div>
-            <div class="card__content">
-                <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
-                    </a>
-                </p>
-                <div class="card__info">
-                    <a href="perfil.html" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
-                </div>
-                <br>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
-            </div>
-            <div class="card__content">
-                <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
-                    </a>
-                </p>
-                <div class="card__info">
-                    <a href="perfil.html" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
-                </div>
-                <br>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
-            </div>
-            <div class="card__content">
-                <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
-                    </a>
-                </p>
-                <div class="card__info">
-                    <a href="#" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
-                </div>
-                <br>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
-            </div>
-            <div class="card__content">
-                <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
-                    </a>
-                </p>
-                <div class="card__info">
-                    <a href="#" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
-                </div>
-                <br>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card__image-container">
-                <img src="img/reparar.jpeg" alt="mountain">
-            </div>
-            <div class="card__content">
-                <p class="card__title text--medium">
-                    <a href="trabajo.html" class="ir">
-                        <strong>Reparo autos electricos</strong>
-                    </a>
-                </p>
-                <div class="card__info">
-                    <a href="#" class="vendor">Elon Musk</a>
-                    <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
-                </div>
-                <br>
-            </div>
-        </div>
+        <% } %>
     </section>
+
 </main>
+
+<div class="row">
+<!-- pagination -->
+<% if(pages > 0) { %> <!-- show pagination if there is pages -->
+<nav class="mx-auto">
+  <ul class="pagination">
+    <!-- FIRST ITEM -->
+    <% if(current == 1) { %>
+      <li class="page-item disabled">
+        <a class="page-link" href="#">First</a>
+      </li>
+    <% } else { %>
+      <li class="page-item">
+        <a class="page-link" href="/category/1">First</a>
+      </li>
+    <% } %>
+    <!-- ITEMS  -->
+    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+    <% if(i !== 1) { %>
+      <li class="page-item disabled">
+        <a class="page-link" href="#">...</a>
+      </li>
+    <% } %>
+    <% for(; i <= (Number(current) + 4) && i <= pages; i++) { %>
+      <% if(i == current) { %>
+        <li class="page-item active">
+          <a class="page-link" href="<%= i %>">
+            <%= i %>
+          </a>
+        </li>
+      <% } else { %>
+        <li class="page-item">
+          <a class="page-link" href="/category/<%= i %>">
+            <%= i %>
+          </a>
+        </li>
+      <% } %>
+      <% if (i == Number(current) + 4 && i < pages) { %>
+         <li class="page-item disabled">
+           <a class="page-link" href="#">...</a>
+         </li>
+      <% } %>
+    <% } %>
+    <!-- LAST ITEM -->
+    <% if(current == pages) { %>
+      <li class="page-item disabled">
+        <a class="page-link" href="#">
+          Last
+        </a>
+      </li>
+    <% } else { %>
+      <li class="page-item">
+        <a class="page-link" href="/category/<%= pages %>">
+          Last
+        </a>
+      </li>
+    <% } %>
+  </ul>
+</nav>
+<% } %>
+</div>
+
 <%- include ('footer') %>
