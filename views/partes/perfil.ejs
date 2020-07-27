@@ -9,7 +9,10 @@
         <p class="full-name"><%= session.nombre %> <%= session.apellido %></p>
         <p class="username">correo: <%= session.email %></p>
         <p >Teléfono: <strong><%= session.telefono %></strong></p>
-        <p class="desc">Descripción: <br><%= session.desc %></p>
+        <p class="desc">Descripción: <br><%= session.desc %></p><br>
+        <a href="/CrearPublicacion" type="btn" class="btn btn-success">Crear Publicaciones</a><br><br>
+        <a href="#" type="btn" class="btn btn-warning">Editar Publicaciones</a><br><br>
+        <a href="#" type="btn" class="btn btn-danger">Eliminar Publicaciones</a><br><br>
     </div>
 
     <div class="card-footer">
@@ -37,7 +40,7 @@
                 <div class="card__info">
                     <a href="#" class="vendor">Elon Musk</a>
                     <p class="card__price text--medium">San Miguelito</p>
-                    <p class="card__price text--medium">Capital</p>
+                    <p class="card__price text--medium">Capital</p><br>
                 </div>
                 <br>
             </div>

@@ -68,20 +68,10 @@ app.use(bodyParser.urlencoded({extended: true})); //Para interpretar los datos q
 
 //RUTAS
 const controladorUsuario = require('./controladores/usuario');
+const controladorTrabajo = require('./controladores/trabajo');
 
 //REGISTRAR UN NUEVO USUARIO
-app.post('/add', upload.single('file'),/*
-function(req,res){
-    console.log(JSON.stringify(req.body.email));
-    var upload = multer({ storage : storage}).single('file');
-    upload(req,res,function(err) {
-        if(err) {
-            return res.end("Error uploading file.");
-        }
-        res.end("File is uploaded");
-    });
-}*/
-controladorUsuario.postSignup);
+app.post('/add', upload.single('file'), controladorUsuario.postSignup);
 
 //LOGIN DE UN USUARIO EXISTENTE
 app.post('/login2', controladorUsuario.postLogin);
@@ -132,13 +122,30 @@ app.get('/Login', function(req, res){
 
 //MUESTRA LA LISTA DE TRABAJOS
 app.get('/Trabajos', function(req, res){
-    res.type('text/html');
-    var session = req.user;
-    res.render('partes/trabajo', {session},
-    function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
+    var qwery1 = { "_id" : req.query.dp }; //CONSULTA PARA LA TABLA DE TRABAJOS
+    var qwery2 = { "_id" : req.query.du }; //CONSULTA PARA LA TABLA DE USUARIOS
+
+    Work
+      .find(qwery1) // finding all documents
+      .exec((err, works) => {
+
+        Usuario
+          .find(qwery2) // finding all documents
+          .exec((err, usuarios) => {
+
+            console.log(works);
+            console.log(usuarios);
+
+            res.type('text/html');
+            var session = req.user;
+            workDp = works[0];
+            userDu = usuarios[0];
+            console.log(userDu._id);
+            res.render('partes/trabajo', {session, workDp, userDu});
+
+          });
+
+      });
 });
 
 //MUESTRA EL PERFL DEL USUARIO
@@ -151,6 +158,21 @@ app.get('/Perfil', function(req, res){
         res.send(html);
     });
 });
+
+//MUESTRA CREAR PUBLICACION
+app.get('/CrearPublicacion', function(req, res){
+    res.type('text/html');
+    var session = req.user;
+    res.render('partes/crearPublicacion', {session},
+    function(err, html){
+        if(err) throw err;
+        res.send(html);
+    });
+});
+
+//REGISTRAR UNA NUEVA PUBLICACION - SE ACTIVA CUANDO PRESIONAS ENVIAR EN EL FORMULARIO DE PUBLICACION
+app.post('/addCatg'/*, controladorTrabajo. NOMBRE DE LA FUNCION QUE CREAS EN TRABAJO*/);
+
 
 //MUESTRA EL PANEL DE CONFIGURACION DEL USUARIO
 app.get('/Conf', function(req, res){
@@ -177,19 +199,23 @@ app.get('/Perfil_autor', function(req, res){
 //MUESTRA LAS OFERTAS POR CATEGORIAS
 
 app.get('/Category/:page', (req, res) => {
-  let perPage = 9;
+  console.log(req.query.v1);
+  let perPage = 1;
   let page = req.params.page || 1;
   var session = req.user;
+  var qwery = { "publicaciones.categoria" : req.query.v1 };
+  var catg = req.query.v1;
   Work
-    .find({}) // finding all documents
+    .find(qwery) // finding all documents
     .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
     .limit(perPage) // output just 9 items
     .exec((err, works) => {
-      Work.count((err, count) => { // count to calculate the number of pages
+      Work.find(qwery).count((err, count) => { // count to calculate the number of pages
         if (err) return next(err);
         res.render('partes/category', {
           session,
           works,
+          catg,
           current: page,
           pages: Math.ceil(count / perPage)
         });
@@ -214,17 +240,6 @@ app.get('/fakedata', (req, res, next) => {
   }
   res.redirect('/');
 });
-
-/*
-app.get('/Category', function(req, res){
-    res.type('text/html');
-    var session = req.user;
-    res.render('partes/category', {session},
-    function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});*/
 
 
 //Error 404

@@ -1,7 +1,7 @@
 <%- include ('../partes/header', {session}); %>
 
 <div class="category-title">
- <h1 class="title">Electricidad</h1>
+ <h1 class="title"><%= catg %></h1>
 </div>
 
 
@@ -11,18 +11,17 @@
         <% for(var i = 0; i < works.length; i++) { %>
         <div class="card">
             <div class="card__image-container">
-                <img src="<%= works[i].cover %>" alt="mountain">
+                <img src="../images/tenor.gif" alt="mountain">
             </div>
             <div class="card__content">
                 <p class="card__title text--medium">
-                    <a href="../trabajos" class="ir">
-                        <strong><%= works[i].tituloTrabajo %></strong>
+                    <a href="../trabajos?dp=<%= works[i]._id %>&du=<%= works[i].userID %>" class="ir">
+                        <strong><%= works[i].publicaciones.tituloTrabajo %></strong>
                     </a>
                 </p>
                 <div class="card__info">
-                    <a href="perfil.html" class="vendor"><%= works[i].emailUser %></a>
-                    <p class="card__price text--medium"><%= works[i].lugar %></p>
-                    <p class="card__price text--medium"><%= works[i].lugar %></p>
+                  <a href="#" class="card bg-success text-white" style="margin-right: 15px;"><%= works[i].nombre %></a>
+                  <a class="card bg-info text-white"><%= works[i].publicaciones.lugar %></a>
                 </div>
                 <br>
             </div>
@@ -44,7 +43,7 @@
       </li>
     <% } else { %>
       <li class="page-item">
-        <a class="page-link" href="/category/1">First</a>
+        <a class="page-link" href="/category/1?v1=<%= catg %>">First</a>
       </li>
     <% } %>
     <!-- ITEMS  -->
@@ -63,7 +62,7 @@
         </li>
       <% } else { %>
         <li class="page-item">
-          <a class="page-link" href="/category/<%= i %>">
+          <a class="page-link" href="/category/<%= i %>?v1=<%= catg %>">
             <%= i %>
           </a>
         </li>
@@ -83,7 +82,7 @@
       </li>
     <% } else { %>
       <li class="page-item">
-        <a class="page-link" href="/category/<%= pages %>">
+        <a class="page-link" href="/category/<%= pages %>?v1=<%= catg %>">
           Last
         </a>
       </li>

@@ -1,28 +1,23 @@
 <%- include ('header', {session}); %>
 
+<br>
 <div class="container">
 
 
-    <h1>Reparo autos eléctricos</h1><br>
+    <h1><%= workDp.publicaciones.tituloTrabajo %></h1><br>
     <h4>Breve descripción del trabajo</h4>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis fuga eum delectus ratione accusamus molestias
-        exercitationem deserunt tempore impedit praesentium repudiandae alias ex, esse illo, odit expedita enim
-        reiciendis autem!</p><br>
+    <p><%= workDp.publicaciones.descripcion %></p><br>
     <h4>Informacion sobre el trabajo</h4>
     <hr>
     <form action="/agregarCita" method="POST">
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Habilidades y Funciones</h5>
-                <label>
-                    - Excelente trato con el cliente. <br>
-                    - Actitud de servicio. <br>
-                    - Manejo de motores. <br>
-                    - Facilidad de palabras. <br>
-                    - Puntualidad, Responsable y con valores empresariales compartidos. <br>
-                    - Organizado. <br>
-                    - Habilidad para manejo de trasmision. <br>
-                    - Pro actividad.</label>
+                <ul>
+                  <% for(var i = 0; i < userDu.servicio.areaTrabajo.length; i++) { %><br>
+                    <li class="list-group"> ➨ <%= userDu.servicio.areaTrabajo[i] %></li>
+                  <% } %>
+                </ul>
                 <hr>
             </div>
         </div>
@@ -50,20 +45,22 @@
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Categoria del empleo</h5>
-                <label for="inputEmail4">Mecanica</label>
+                <label for="inputEmail4"><%= workDp.publicaciones.categoria %></label>
                 <hr>
             </div>
         </div>
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Pago estimado</h5>
-                <label for="inputEmail4">Alto</label>
+                <label for="inputEmail4"></label>
                 <hr>
             </div>
         </div>
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Lugar</h5><br>
+                <label for="inputEmail4"> ➨ <%= workDp.publicaciones.lugar %></label>
+                <br>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8084482.303436115!2d-84.60334715297978!3d8.352262073007717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa61583c8be2be3%3A0x79eee04d1fa59bcf!2zUGFuYW3DoQ!5e0!3m2!1ses-419!2spa!4v1593381353062!5m2!1ses-419!2spa"
                     width="500" height="400" frameborder="0" style="border:0;" allowfullscreen=""
@@ -74,28 +71,32 @@
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Cliente</h5>
-                <label for="inputEmail4"><a href="#">Juanito Perez</a></label>
+                <label for="inputEmail4"><a href="#"><%= userDu.nombre + ' ' + userDu.apellido %></a></label>
                 <hr>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <h5>Fecha</h5>
-                <label for="inputEmail4">25/6/2020</label>
+                <h5>Fecha de Publicación</h5>
+                <label for="inputEmail4"><%= workDp.publicaciones.fecha.getDate() + ' / ' + workDp.publicaciones.fecha.getMonth() + ' / ' + workDp.publicaciones.fecha.getFullYear()%></label>
                 <hr>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <h5>Contactar</h5>
-                <label for="inputEmail4">Tel: 1-234-567</label>
+                <label for="inputEmail4"><%= userDu.servicio.telefono[0] %></label>
                 <hr>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <h5>Preparación</h5>
-                <label for="inputEmail4">Conocimiento en autos Honda</label>
+                <ul>
+                  <% for(var i = 0; i < userDu.servicio.especialidad.length; i++) { %><br>
+                    <li class="list-group"> ➨ <%= userDu.servicio.especialidad[i] %></li>
+                  <% } %>
+                </ul>
                 <hr>
             </div>
         </div>

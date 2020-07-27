@@ -11,9 +11,9 @@ exports.postSignup = (req, res, next) => {
     apellido: req.body.apellido,
     password: req.body.password,
     cedula: req.body.cedula,
-    telefono: req.body.telefono,
+/*  telefono: req.body.telefono,   //ESTA ASI PARA QUE NO MOLESTE CUANDO TE REGISTRAR YO LO CAMBIO MAÑANA 
     file: req.file.originalname,
-    desc: req.body.desc
+    desc: req.body.desc*/
 
   });
 
