@@ -4,14 +4,16 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = new mongoose.Schema({
   email: {type: String, required: true},
   password: {type: String, required: true},
+  passwordFake: {type: String},
   nombre: {type: String, required: true},
   apellido: {type: String, required: true},
-  cedula: {type: String},
+  telefono: {type: String },
+  trabajo: {type: String, required: true},
   servicio: {type : Object,
-    areaTrabajo : {type : Array},
-    zonaTrabajo : {type : Array},
-    especialidad : {type : Array},
-    telefono: {type: Array}
+    areaTrabajo: {type: Array, required: false},
+    zonaTrabajo: {type: String, required: false},
+    especialidad: {type: String, required: false},
+    cedula: {type: String, required: false}
   },
   file: {type: String},
   desc: {type: String}

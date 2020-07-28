@@ -2,40 +2,30 @@
 <br><br>
 <div class="card-pro">
     <div class="card-header">
-        <img class="profile-img" src="../subidas/perfil/<%= session.file %>" alt="elon">
+        <img class="profile-img" src="../subidas/perfil/<%= userD.file %>" alt="elon">
     </div>
 
     <div class="card-body">
-        <p class="full-name"><%= session.nombre %> <%= session.apellido %></p>
+        <p class="full-name"><%= userD.nombre %> <%= userD.apellido %></p>
          <hr>
-        <p class="username">correo: <%= session.email %></p>
+        <p class="username">correo: <%= userD.email %></p>
          <hr>
-        <p >Teléfono: <strong><%= session.telefono %></strong></p>
+        <p >Teléfono: <strong><%= userD.telefono %></strong></p>
          <hr>
-        <p class="desc">Descripción<br><strong><%= session.desc %></strong></p><br>
-        <% if(session.trabajo == "si"){ %>
-        <a href="/CrearPublicacion" type="btn" class="btn btn-success">Crear Publicaciones</a><br><br>
-        <a href="#" type="btn" class="btn btn-warning">Editar Publicaciones</a><br><br>
-        <a href="#" type="btn" class="btn btn-danger">Eliminar Publicaciones</a><br><br>
-        <% }
-        %>
+        <p class="desc">Descripción<br><strong><%= userD.desc %></<strong></p><br>
     </div>
-    <% if(session.trabajo == "si"){ %>
+
     <div class="card-footer">
         <div class="col1">
-            <p><span class="count"><%= works.length %></span> Trabajos</p>
+            <p><span class="count"><%= works.length %></span> Trabajo(s)</p>
         </div>
     </div>
-    <% }
-    %>
-
 </div>
 
 <main>
 
   <section class="cards">
-        <% if(session.trabajo == "si"){
-        for(var i = 0; i < works.length; i++) { %>
+        <% for(var i = 0; i < works.length; i++) { %>
         <div class="card">
             <div class="card__image-container">
                 <img src="../subidas/portada/<%= works[i].file %>" alt="mountain">
@@ -53,10 +43,7 @@
                 <br>
             </div>
         </div>
-        <% }
-        }
-        %>
+        <% } %>
     </section>
-
 </main>
 <%- include ('footer') %>

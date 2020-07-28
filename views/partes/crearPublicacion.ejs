@@ -2,12 +2,12 @@
 <br><br>
 <body>
     <div class="container">
-        <h1>Crea Tu Publicidad</h1><br>
+        <h1>Crea Tu Publicación</h1><br>
         <hr>
-        <form action="/addCatg" method="POST">
+        <form action="/addCatg" method="POST" id="form" onsubmit="Valida(this)" enctype="multipart/form-data">
             <div class="form-group">
               <label>Categoria</label>
-              <select id="categoria" class="form-control col-md-6">
+              <select name="categoria" class="form-control col-md-6">
                 <option selected>Seleccione...</option>
                 <option value="Ebanisteria">Ebanisteria</option>
                 <option value="Construccion">Construccion</option>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="form-group">
-              <label>Categoria</label>
+              <label>Ubicación</label>
               <select name="lugar"  class="form-control col-md-6">
                 <option selected>Seleccione...</option>
                 <option value="Panamá">Panamá</option>
@@ -43,10 +43,19 @@
             <div class="form-row ">
                 <div class="form-group col-md-6">
                     <label>Descripción</label>
-                    <textarea name="" id="" cols="70" rows="6.7"></textarea><br>
+                    <textarea name="descripcion" id="" cols="70" rows="6.7"></textarea><br>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary">Publicar</button>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Foto de Perfil:</label>
+              <input type="file" class="form-control-file" id="file" name="file" required>
+            </div>
+            <div class="form-group"  style="display:none;">
+                <input type="text" name="id" value=<%= session._id %> >
+                <input type="text" name="nombre" value=<%= session.nombre %> >
+                <input type="text" name="apellido" value=<%= session.apellido %> >
+             </div>
+            <button type="submit" class="btn btn-primary">Publicar</button>
         </form>
     </div><br>
 

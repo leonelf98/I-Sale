@@ -3,17 +3,37 @@
 <br><br>
     <div class="container">
         <h1>Créditos</h1><br>
+        <% if(ceDe == 'M'){ %>
+        <h4>Marco Aguilar</h4><br>
+        <h6>Es uno de nuestro integrantes del equipo, es uno de los encargados para el Modelo de base de Datos.</h6><br>
+        <% } %>
+        <% if(ceDe == 'W') {%>
         <h4>William Hong</h4><br>
-        <p>Este es uno de nuestro integrantes del equipo, es uno de los encargados para el Front-end.</p><br>
+        <h6>Este es uno de nuestro integrantes del equipo, es uno de los encargados para el Front-end.</h6><br>
+        <% } %>
+        <% if(ceDe == 'L'){ %>
+        <h4>Leonel Franco</h4><br>
+        <h6>Este es uno de nuestro integrantes del equipo, es uno de los encargados para el Back-end.</h6><br>
+        <% } %>
+        <% if(ceDe == "R"){ %>
+        <h4>René de Leon</h4><br>
+        <h6>Este es uno de nuestro integrantes del equipo, es uno de los encargados para el Back-end.</h6><br>
+        <% } %>
+        <% if(ceDe == "S"){ %>
+        <h4>Severiano Atencio</h4><br>
+        <h6>Este es uno de nuestro integrantes del equipo, es uno de los encargados para el Front-end.</h6><br>
+        <% } %>
+        <hr>
         <h4>Integrantes del equipo</h4>
         <hr>
         <form action="/agregarCita" method="POST">
             <div class="form-row ">
                 <div class="form-group col-md-6">
-                    <label><a href="perfilMarco.html">Marco</a></label><br>
-                    <label><a href="perfilLeonel.html">Leonel</a></label><br>
-                    <label><a href="perfilRene.html">Rene</a></label><br>
-                    <label><a href="perfilSeveriano.html">Severiano</a></label>
+                    <label><a href="../Perfil_autor?ce=M">Marco</a></label><br>
+                    <label><a href="../Perfil_autor?ce=W">William</a></label><br>
+                    <label><a href="../Perfil_autor?ce=L">Leonel</a></label><br>
+                    <label><a href="../Perfil_autor?ce=R">Rene</a></label><br>
+                    <label><a href="../Perfil_autor?ce=S">Severiano</a></label>
                 </div>
             </div>
         </form>

@@ -15,7 +15,6 @@ const passport = require('passport');
 const passportConfig = require('./config/passport');
 
 
-
 const Usuario = require('./models/user'); // importa el esquema
 const Work = require('./models/work'); // importa el esquema
 
@@ -56,16 +55,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true})); //Para interpretar los datos que vienen de un formulario y poder procesarlo
 
 
-//Metodo que establece la direccion y el nombre de la imagen
-/*var storage =   multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null,path.join(__dirname,'/public/subidas'));
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.originalname);
-  }
-});*/
-
 //RUTAS
 const controladorUsuario = require('./controladores/usuario');
 const controladorTrabajo = require('./controladores/trabajo');
@@ -75,6 +64,7 @@ app.post('/add', upload.single('file'), controladorUsuario.postSignup);
 
 //LOGIN DE UN USUARIO EXISTENTE
 app.post('/login2', controladorUsuario.postLogin);
+
 
 //VERIFICAR LA SESION DEL USUARIO
 app.get('/usuarioInfo', passportConfig.estaAutenticado, (req, res) => {
@@ -96,6 +86,10 @@ app.get('/logout', passportConfig.estaAutenticado, controladorUsuario.logout);
           res.send(html);
       });
   });
+
+//REGISTRAR UNA NUEVA PUBLICACION - SE ACTIVA CUANDO PRESIONAS ENVIAR EN EL FORMULARIO DE PUBLICACION
+app.post('/addCatg', upload.single('file'), controladorTrabajo.postRegistrar);
+
 
 
 //MUESTRA EL PANEL DE REGISTRO DE USUARIO
@@ -133,14 +127,10 @@ app.get('/Trabajos', function(req, res){
           .find(qwery2) // finding all documents
           .exec((err, usuarios) => {
 
-            console.log(works);
-            console.log(usuarios);
-
             res.type('text/html');
             var session = req.user;
             workDp = works[0];
             userDu = usuarios[0];
-            console.log(userDu._id);
             res.render('partes/trabajo', {session, workDp, userDu});
 
           });
@@ -148,14 +138,43 @@ app.get('/Trabajos', function(req, res){
       });
 });
 
+
+app.get('/PerfilView', function(req, res){
+    var qwery1 = { "_id" : req.query.ud }; //CONSULTA PARA LA TABLA DE USER
+    var qwery2 = { "userID" : req.query.ud }; //CONSULTA PARA LA TABLA DE TRABAJOS
+
+    Work
+      .find(qwery2) // finding all documents
+      .exec((err, works) => {
+
+        Usuario
+          .find(qwery1) // finding all documents
+          .exec((err, usuarios) => {
+          //  console.log(works);
+            console.log(usuarios[0].nombre);
+            res.type('text/html');
+            var session = req.user;
+            var userD = usuarios[0];
+
+            res.render('partes/perfilView', {session, works, userD});
+
+          });
+
+      });
+});
+
+
 //MUESTRA EL PERFL DEL USUARIO
 app.get('/Perfil', function(req, res){
-    res.type('text/html');
-    var session = req.user;
-    res.render('partes/perfil', {session},
-    function(err, html){
-        if(err) throw err;
-        res.send(html);
+  var session = req.user;
+  var qwery1 = { "userID" : session._id }; //CONSULTA PARA LA TABLA DE TRABAJOS
+  Work
+    .find(qwery1) // finding all documents
+    .exec((err, works) => {
+
+          res.type('text/html');
+          res.render('partes/perfil', {session, works});
+
     });
 });
 
@@ -170,8 +189,6 @@ app.get('/CrearPublicacion', function(req, res){
     });
 });
 
-//REGISTRAR UNA NUEVA PUBLICACION - SE ACTIVA CUANDO PRESIONAS ENVIAR EN EL FORMULARIO DE PUBLICACION
-app.post('/addCatg'/*, controladorTrabajo. NOMBRE DE LA FUNCION QUE CREAS EN TRABAJO*/);
 
 
 //MUESTRA EL PANEL DE CONFIGURACION DEL USUARIO
@@ -185,22 +202,11 @@ app.get('/Conf', function(req, res){
     });
 });
 
-//MUESTRA EL PERFILO DE LOS DUEÑOS DE LA PAGINA
-app.get('/Perfil_autor', function(req, res){
-    res.type('text/html');
-    var session = req.user;
-    res.render('partes/perfil_autor', {session},
-    function(err, html){
-        if(err) throw err;
-        res.send(html);
-    });
-});
-
 //MUESTRA LAS OFERTAS POR CATEGORIAS
 
 app.get('/Category/:page', (req, res) => {
   console.log(req.query.v1);
-  let perPage = 1;
+  let perPage = 6;
   let page = req.params.page || 1;
   var session = req.user;
   var qwery = { "publicaciones.categoria" : req.query.v1 };
@@ -223,22 +229,45 @@ app.get('/Category/:page', (req, res) => {
     });
 });
 
-app.get('/fakedata', (req, res, next) => {
-  for(let i = 0; i < 90; i++) {
-    const work = new Work();
-    work.emailUser = faker.internet.email();
-    work.tituloTrabajo = faker.commerce.productName();
-    work.categoria = faker.commerce.productName();
-    work.lugar = faker.commerce.productName();
-    work.fecha = faker.date.past();
-    work.cedula = faker.commerce.productName();
-    work.clasificacion = faker.commerce.productName();
-    work.cover = faker.image.image();
-    work.save(err => {
-      if (err) { return next(err); }
+//MUESTRA el perfil del trabajador
+app.get('/PerfilView', function(req, res){
+    var qwery1 = { "_id" : req.query.dp }; //CONSULTA PARA LA TABLA DE TRABAJOS
+    var qwery2 = { "_id" : req.query.du }; //CONSULTA PARA LA TABLA DE USUARIOS
+    Work
+      .find(qwery1) // finding all documents
+      .exec((err, works) => {
+        Usuario
+          .find(qwery2) // finding all documents
+          .exec((err, usuarios) => {
+            res.type('text/html');
+            var session = req.user;
+            userDu = usuarios[0];
+            res.render('partes/perfilView', {session, works, userDu});
+
+          });
+
+      });
+});
+
+//MUESTRA EL PERFILO DE LOS DUEÑOS DE LA PAGINA
+app.get('/Perfil_autor', function(req, res){
+    var ceDe = req.query.ce;
+    res.type('text/html');
+    var session = req.user;
+    res.render('partes/perfil_autor', {session, ceDe},
+    function(err, html){
+        if(err) throw err;
+        res.send(html);
     });
-  }
-  res.redirect('/');
+});
+
+
+
+app.get('/PerfilView', function(req, res){
+    var ceDe = { "_id" : req.query.dp }; //CONSULTA PARA LA TABLA DE TRABAJOS
+            res.type('text/html');
+            var session = req.user;
+            res.render('partes/perfil_autor', {session, ceDe});
 });
 
 

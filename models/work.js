@@ -9,11 +9,11 @@ const productSchema = new Schema({
     tituloTrabajo : {type: String},
     categoria : {type: String},
     lugar : {type: String},
-    fecha : {type: Date},
     clasificacion: {type: String},
     comentarios : {type : Array},
     descripcion : {type : String}
-  }
+  },
+    file: {type: String},
 }, {
   timestamps: true
 });

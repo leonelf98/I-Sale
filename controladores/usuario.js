@@ -10,17 +10,27 @@ exports.postSignup = (req, res, next) => {
     nombre: req.body.nombre,
     apellido: req.body.apellido,
     password: req.body.password,
-    cedula: req.body.cedula,
-/*  telefono: req.body.telefono,   //ESTA ASI PARA QUE NO MOLESTE CUANDO TE REGISTRAR YO LO CAMBIO MAÑANA 
+    telefono: req.body.telefono,
+    trabajo: req.body.trabajo,
+    servicio:{
+     cedula: req.body.cedula,
+     especialidad: req.body.especialidad,
+     areaTrabajo: req.body.areaTrabajo,
+     zonaTrabajo: req.body.zonaTrabajo
+   },
     file: req.file.originalname,
-    desc: req.body.desc*/
+    desc: req.body.desc
 
   });
 
-  Usuario.findOne({email: req.body.email}, (err, usuarioExistente) => { //funcion anonima
+  Usuario.findOne({email : req.body.email}, (err, usuarioExistente) => { //funcion anonima
     if (usuarioExistente) {
-      return res.status(400).send('Ya ese email esta registrado');
+      return res.status(400).send(" <script> alert('El correo ya existe');window.location='/Registro'; </script>");
     }
+    Usuario.findOne({"servicio.cedula" : req.body.cedula}, (err, usuarioExistente) => { //funcion anonima
+      if (usuarioExistente) {
+        return res.status(400).send(" <script> alert('La cedula existe');window.location='/Registro'; </script>");
+      }
     nuevoUsuario.save((err) => {
       if (err) {
         next(err);
@@ -32,15 +42,17 @@ exports.postSignup = (req, res, next) => {
       //  res.send('Usuario creado exitosamente');
         res.type('text/html');
         var session = req.user;
-        res.render('partes/perfil', {session},
+        res.render('index', {session},
         function(err, html){
             if(err) throw err;
             res.send(html);
+
         });
       })
     })
-  })
+  })})
 }
+
 //res.status(400).send('Email o contraseña no válidos');
 //METODO PARA LOGUEARSE USUARIOS EXISTENTES
 exports.postLogin = (req, res, next) => {
@@ -65,7 +77,7 @@ exports.postLogin = (req, res, next) => {
       // res.send('Login exitoso');
       res.type('text/html');
       var session = req.user;
-      res.render('partes/perfil', {session},
+      res.render('index', {session},
       function(err, html){
           if(err) throw err;
           res.send(html);

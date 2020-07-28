@@ -11,7 +11,7 @@
         <% for(var i = 0; i < works.length; i++) { %>
         <div class="card">
             <div class="card__image-container">
-                <img src="../images/tenor.gif" alt="mountain">
+                <img src="../subidas/portada/<%= works[i].file %>" alt="mountain">
             </div>
             <div class="card__content">
                 <p class="card__title text--medium">
@@ -20,7 +20,7 @@
                     </a>
                 </p>
                 <div class="card__info">
-                  <a href="#" class="card bg-success text-white" style="margin-right: 15px;"><%= works[i].nombre %></a>
+                  <a href="../perfilView?ud=<%= works[i].userID %>" class="card bg-success text-white" style="margin-right: 15px;"><%= works[i].nombre %></a>
                   <a class="card bg-info text-white"><%= works[i].publicaciones.lugar %></a>
                 </div>
                 <br>

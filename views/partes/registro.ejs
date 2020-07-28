@@ -2,116 +2,122 @@
 
 <script>
 function mostrar(dato){
-    if(dato=="option1"){
+    if(dato=="si"){
         document.getElementById("especialidad").style.display = "block";
     }
-    if(dato=="option2"){
+    if(dato=="no"){
         document.getElementById("especialidad").style.display = "none";
     }
 }
 </script>
-
+<!-----Debes remplazarse este es el q va-->
 <div class="container" style="padding: 40px;">
-        <h3>Formulario de Registro</h3><br>
-        <form action="/add" method="post" id="form" enctype="multipart/form-data"><!-- enctype="multipart/form-data"  NECESARIO PARA PODER GUARDAR LOS ARCHIVOS EN EL SERVIDOR -->
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Nombre:</label>
-                    <input type="text" name="nombre" class="form-control" id="nombre" required>
+    <h3>Formulario de Registro</h3><br>
+    <form action="/add" method="post" id="form" onsubmit="Valida(this)" enctype="multipart/form-data"><!-- enctype="multipart/form-data"  NECESARIO PARA PODER GUARDAR LOS ARCHIVOS EN EL SERVIDOR -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Nombre:</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Apellido:</label>
+                <input type="text" name="apellido" class="form-control" id="apellido" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Correo:</label>
+                <input type="email" name="email" class="form-control" id="email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Contraseña</label>
+                <input type="password" name="password" class="form-control" id="password" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Telefono:</label>
+                <input type="text" name="telefono" class="form-control" id="inputEmail4">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputEmail4">Descripción:</label>
+                <textarea class="form-control" rows="5" id="comment" name="desc" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Foto de Perfil:</label>
+              <input type="file" class="form-control-file" id="file" name="file" required>
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>¿Brindar Servicios?</label>
+                <label>Opción para las personas que buscan ofrecer sus servicios en línea</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trabajo" id="exampleRadios1" value="si" onchange="mostrar(this.value);">
+                    <label class="form-check-label" for="exampleRadios1">
+                        Si
+                    </label>
                 </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Apellido:</label>
-                    <input type="text" name="apellido" class="form-control" id="apellido" required>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="trabajo" id="exampleRadios2" value="no" onchange="mostrar(this.value);" checked>
+                    <label class="form-check-label" for="exampleRadios2">
+                        No
+                    </label>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Correo:</label>
-                    <input type="email" name="email" class="form-control" id="email" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Contraseña</label>
-                    <input type="password" name="password" class="form-control" id="password" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Telefono:</label>
-                    <input type="text" name="telefono" class="form-control" id="telefono" placeholder="+507 0000 0000" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="inputEmail4">Cedula:</label>
-                    <input type="text" name="cedula" class="form-control" id="cedula" placeholder="Ejm: 8-0000-0000" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                    <label for="inputEmail4">Descripción:</label>
-                    <textarea class="form-control" rows="5" id="comment" name="desc" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlFile1">Foto de Perfil:</label>
-                  <input type="file" class="form-control-file" id="file" name="file">
-                </div>
-            </div>
-            <br>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label>¿Brindar Servicios?</label>
-                    <label>Opción para las personas que buscan ofrecer sus servicios en línea</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" onchange="mostrar(this.value);">
-                        <label class="form-check-label" for="exampleRadios1">
-                            Si
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" onchange="mostrar(this.value);" checked>
-                        <label class="form-check-label" for="exampleRadios2">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group" id="especialidad" style="display:none;">
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Area de Trabajo:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Especialidades:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
+        </div>
+        <hr>
+        <!----Especialidades--->
+        <div class="form-group" id="especialidad" style="display:none;">
+            <label for="inputEmail4">Habilidades:</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="areaTrabajo" value="Plomeria">Plomeria
+                </label>
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Zona de Trabajo:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Telefono:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="areaTrabajo" value="Mecanica">Mecanica
+                </label>
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Copia de cedula:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Foto de Perfil:</label>
-                      <input type="text" name="test" class="form-control" id="inputEmail4">
-                  </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="areaTrabajo" value="Construccion">Construccion
+                </label>
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <label for="inputEmail4">Al aceptar, igualmente aceptas nuestro Terminos y servicios.</label>
-                  </div>
-              </div><br>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" name="areaTrabajo" value="Ebanisteria">Ebanisteria
+                </label>
+              </div>
+              <br>
+              <input type="checkbox" class="form-check-input" name="areaTrabajo" value="" style="display:none;" checked>
+
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="inputEmail4">Zona de Trabajo:</label>
+                  <input type="text" name="zonaTrabajo" class="form-control" id="inputEmail4">
+              </div>
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Cedula:</label>
+                <input type="text" name="cedula" class="form-control" id="cedula" placeholder="Ejm: 8-0000-0000">
             </div>
-            <button type="submit" class="btn btn-primary">Aceptar</button>
-        </form>
-    </div><br>
+        </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                  <label for="inputEmail4">Al aceptar, igualmente aceptas nuestro Terminos y servicios.</label>
+              </div>
+          </div><br>
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+</div><br>
 
 <%- include ('footer') %>

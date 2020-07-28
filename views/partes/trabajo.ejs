@@ -14,9 +14,10 @@
             <div class="form-group col-md-6">
                 <h5>Habilidades y Funciones</h5>
                 <ul>
-                  <% for(var i = 0; i < userDu.servicio.areaTrabajo.length; i++) { %><br>
+                  <% for(var i = 0; i < userDu.servicio.areaTrabajo.length; i++) {
+                      if(userDu.servicio.areaTrabajo[i]){ %><br>
                     <li class="list-group"> ➨ <%= userDu.servicio.areaTrabajo[i] %></li>
-                  <% } %>
+                  <% } } %>
                 </ul>
                 <hr>
             </div>
@@ -24,21 +25,7 @@
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Muestra del trabajo</h5><br>
-                <img src="public/images/mecanica_automotriz.jpg" width="400" alt="">
-            </div>
-            <div class="form-group col-md-6">
-                <h5 style="color: white;">-</h5><br>
-                <img src="public/images/mecanuca 2.jpg" width="400" alt="">
-            </div>
-        </div>
-        <div class="form-row ">
-            <div class="form-group col-md-6">
-                <h5 style="color: white;">-</h5>
-                <img src="public/images/Mecánica-Automotriz333.jpg" width="400" alt="">
-            </div>
-            <div class="form-group col-md-6">
-                <h5 style="color: white;">-</h5>
-                <img src="public/images/2jz.jpg" width="400" alt="">
+                <img src="../subidas/portada/<%= workDp.file %>" width="400" alt="">
             </div>
         </div>
         <hr>
@@ -71,21 +58,21 @@
         <div class="form-row ">
             <div class="form-group col-md-6">
                 <h5>Cliente</h5>
-                <label for="inputEmail4"><a href="#"><%= userDu.nombre + ' ' + userDu.apellido %></a></label>
+                <label for="inputEmail4"><a href="../perfilView?ud=<%= userDu._id %>"> <%= userDu.nombre + ' ' + userDu.apellido %></a></label>
                 <hr>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <h5>Fecha de Publicación</h5>
-                <label for="inputEmail4"><%= workDp.publicaciones.fecha.getDate() + ' / ' + workDp.publicaciones.fecha.getMonth() + ' / ' + workDp.publicaciones.fecha.getFullYear()%></label>
+                <label for="inputEmail4"><%= workDp.createdAt.getDate() + ' / ' + workDp.createdAt.getMonth() + ' / ' + workDp.createdAt.getFullYear() %></label>
                 <hr>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
                 <h5>Contactar</h5>
-                <label for="inputEmail4"><%= userDu.servicio.telefono[0] %></label>
+                <label for="inputEmail4"><%= userDu.telefono %></label>
                 <hr>
             </div>
         </div>
@@ -93,9 +80,9 @@
             <div class="form-group col-md-6">
                 <h5>Preparación</h5>
                 <ul>
-                  <% for(var i = 0; i < userDu.servicio.especialidad.length; i++) { %><br>
-                    <li class="list-group"> ➨ <%= userDu.servicio.especialidad[i] %></li>
-                  <% } %>
+                <!--  <% /* for(var i = 0; i < userDu.servicio.especialidad.length; i++) { */%><br>
+                    <li class="list-group"> ➨ <%= /* userDu.servicio.especialidad[i] */ %></li>
+                  <% /* } */%> -->
                 </ul>
                 <hr>
             </div>
