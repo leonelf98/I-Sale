@@ -1,6 +1,7 @@
 // MANEJAR LLAMADAS DENTRO DE LA APLICACION E INTERACTUAR CON LOS MODELOS
 const passport = require('passport');
 const Usuario = require('../models/user');
+const Work = require('../models/work'); // importa el esquema
 
 //ruta para crear los usuarios, METODO PARA CREAR USUARIOS
 exports.postSignup = (req, res, next) => {
@@ -39,15 +40,23 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           next(err); //milware
         }
-      //  res.send('Usuario creado exitosamente');
-        res.type('text/html');
-        var session = req.user;
-        res.render('index', {session},
-        function(err, html){
-            if(err) throw err;
-            res.send(html);
 
-        });
+        let perPage = 9;
+        let page = req.params.page || 1;
+        var session = req.user;
+
+        Work
+          .find({}) // finding all documents
+          .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+          .limit(perPage) // output just 9 items
+          .exec((err, works) => {
+              if (err) return next(err);
+              res.render('index', {
+                session,
+                works,
+              });
+          });
+
       })
     })
   })})
@@ -74,14 +83,23 @@ exports.postLogin = (req, res, next) => {
       if (err) {
         next(err);
       }
-      // res.send('Login exitoso');
-      res.type('text/html');
+
+      let perPage = 9;
+      let page = req.params.page || 1;
       var session = req.user;
-      res.render('index', {session},
-      function(err, html){
-          if(err) throw err;
-          res.send(html);
-      });
+
+      Work
+        .find({}) // finding all documents
+        .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+        .limit(perPage) // output just 9 items
+        .exec((err, works) => {
+            if (err) return next(err);
+            res.render('index', {
+              session,
+              works,
+            });
+        });
+
     })
   })(req, res, next);
 }
@@ -89,11 +107,20 @@ exports.postLogin = (req, res, next) => {
 //METODO PARA LOGOUT
 exports.logout = (req, res) => { //funcion anonima que recibe un req y un res
   req.logout();
-  res.type('text/html');
-  var session = req.user;
-  res.render('index', {session},
-  function(err, html){
-      if(err) throw err;
-      res.send(html);
-  });
+
+      let perPage = 9;
+      let page = req.params.page || 1;
+      var session = req.user;
+
+      Work
+        .find({}) // finding all documents
+        .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+        .limit(perPage) // output just 9 items
+        .exec((err, works) => {
+            if (err) return next(err);
+            res.render('index', {
+            session,
+            works,
+        });
+      });
 }

@@ -29,42 +29,28 @@
 				<div class="col-md-12">
 					<div class="section-heading">
 						<div class="line-dec"></div>
-						<h1>Top categorias</h1>
+						<h1>Top Publicaciones</h1>
 					</div>
 				</div>
 				<div class="col-md-12">
 					<div class="owl-carousel owl-theme">
-						<a href="#">
+							<% for(var i = 0; i < works.length; i++) { %>
+						<a href="../trabajos?dp=<%= works[i]._id %>&du=<%= works[i].userID %>">
 							<div class="featured-item">
-								<img src="assets/images/computadora.jpeg" alt="Item 1" />
-								<h4>Computadoras</h4>
+								<div class="card__image-container">
+										<img src="../subidas/portada/<%= works[i].file %>" alt="mountain">
+								</div>
+								<h4><%= works[i].publicaciones.tituloTrabajo %></h4>
 							</div>
 						</a>
-						<a href="#">
-							<div class="featured-item">
-								<img src="assets/images/cars.jpeg" alt="Item 2" />
-								<h4>Autos</h4>
-							</div>
-						</a>
-						<a href="category">
-							<div class="featured-item">
-								<img src="assets/images/electricity.jpeg" alt="Item 3" />
-								<h4>Electricidad</h4>
-							</div>
-						</a>
-						<a href="#">
-							<div class="featured-item">
-								<img src="assets/images/costura.jpeg" alt="Item 4" />
-								<h4>Costura</h4>
-							</div>
-						</a>
-
-
+							<% } %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
 
 	<!-- Featred Ends Here -->
 

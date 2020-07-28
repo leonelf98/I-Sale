@@ -5,8 +5,9 @@
 
 
     <h1><%= workDp.publicaciones.tituloTrabajo %></h1><br>
-    <h4>Breve descripción del trabajo</h4>
+    <h4>Breve descripción del trabajo</h4><br>
     <p><%= workDp.publicaciones.descripcion %></p><br>
+    <hr>
     <h4>Informacion sobre el trabajo</h4>
     <hr>
     <form action="/agregarCita" method="POST">
@@ -73,17 +74,6 @@
             <div class="form-group col-md-6">
                 <h5>Contactar</h5>
                 <label for="inputEmail4"><%= userDu.telefono %></label>
-                <hr>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <h5>Preparación</h5>
-                <ul>
-                <!--  <% /* for(var i = 0; i < userDu.servicio.especialidad.length; i++) { */%><br>
-                    <li class="list-group"> ➨ <%= /* userDu.servicio.especialidad[i] */ %></li>
-                  <% /* } */%> -->
-                </ul>
                 <hr>
             </div>
         </div>

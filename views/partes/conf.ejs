@@ -1,6 +1,6 @@
 <%- include ('header', {session}); %>
     <div class="container">
-        <form action="">
+        <form action="/editp" method="POST">
             <div class="row">
                 <div class="mx-auto">
                     <h2 style="text-align: center;">Configurar cuenta</h2><br><br>
@@ -12,28 +12,29 @@
                     <h4 style="text-align: center;">Informacion Personal</h4><br>
                     <div style="text-align: center;">
                         <label style="text-align: center;" for="inputEmail4">Nombre:</label>
-                        <input type="text" name="nombre" class="form-control" id="inputEmail4" placeholder="<%= session.nombre %>"
-                            required>
+                        <input type="text" name="nombre" class="form-control" id="inputEmail4" placeholder="<%= session.nombre %>">
                     </div>
                     <div style="text-align: center;">
                         <label for="inputEmail4">Apellido:</label>
-                        <input type="text" name="nombre" class="form-control" id="inputEmail4" placeholder="<%= session.apellido %>"
-                            required>
+                        <input type="text" name="apellido" class="form-control" id="inputEmail4" placeholder="<%= session.apellido %>">
                     </div>
                     <div style="text-align: center;">
                         <label for="inputEmail4">Correo:</label>
-                        <input type="email" name="nombre" class="form-control" id="inputEmail4"  placeholder="<%= session.email %>" required>
+                        <input type="email" name="email" class="form-control" id="inputEmail4"  placeholder="<%= session.email %>">
                     </div>
                     <div style="text-align: center;">
                         <label for="inputEmail4">Telefono:</label>
-                        <input type="password" name="nombre" class="form-control" id="inputEmail4" placeholder="<%= session.telefono %>" required>
+                        <input type="text" name="telefono" class="form-control" id="inputEmail4" placeholder="<%= session.telefono %>">
                     </div>
                     <div style="text-align: center;">
                         <label for="inputEmail4">Cambiar contraseña:</label>
-                        <input type="password" name="nombre" class="form-control" id="inputEmail4" placeholder="**************" required>
+                        <input type="password" name="password" class="form-control" id="inputEmail4" placeholder="**************" required>
                     </div><br>
+                    <div class="form-group"  style="display:none;">
+                        <input type="text" name="id" value=<%= session._id %> >
+                     </div>
                     <div style="text-align: center;">
-                        <button type="button" class="btn btn-success">Actualizar</button>
+                        <button type="submit" class="btn btn-success">Actualizar</button>
                     </div><br>
                     <div style="text-align: center;">
                         <button type="button" class="btn btn-danger">Desactivar la cuenta y borrar mis datos</button>

@@ -1,0 +1,231 @@
+[{
+  "_id": {
+    "$oid": "5f2015f99f6d453664a9f7f5"
+  },
+  "nombre": "Roberto",
+  "apellido": "Espinoza",
+  "userID": {
+    "$oid": "5f2014ce7a0fb4063005a076"
+  },
+  "publicaciones": {
+    "categoria": "Mecanica",
+    "tituloTrabajo": "Mantenimiento a los autos de marca Toyota",
+    "lugar": "Panamá",
+    "descripcion": "Si tienes un auto toyota, yo puedo darle mantenimiento a un precio accesible."
+  },
+  "file": "img_lsaura_20180508.jpg",
+  "createdAt": {
+    "$date": "2020-07-28T12:11:37.561Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T12:11:37.561Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2017969f6d453664a9f7f6"
+  },
+  "nombre": "Roberto",
+  "apellido": "Espinoza",
+  "userID": {
+    "$oid": "5f2014ce7a0fb4063005a076"
+  },
+  "publicaciones": {
+    "categoria": "Mecanica",
+    "tituloTrabajo": "Brindo servicio de cambio del aceite de tu auto",
+    "lugar": "San Miguelito",
+    "descripcion": "No busques más, si quieres realizar el cambio del aceite de tu auto debes llamarme..."
+  },
+  "file": "dgfgdfghjtsr.png",
+  "createdAt": {
+    "$date": "2020-07-28T12:18:30.866Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T12:18:30.866Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2020481d8dff26941229c3"
+  },
+  "nombre": "Neymar",
+  "apellido": "Acosta",
+  "userID": {
+    "$oid": "5f201f18adf7cc13ac66e557"
+  },
+  "publicaciones": {
+    "categoria": "Plomeria",
+    "tituloTrabajo": "Mantenimiento a bombas de agua",
+    "lugar": "Panamá",
+    "descripcion": "Ofrezco mi servicios de plomeria por toda la cuidad de Panamá."
+  },
+  "file": "bwevnae.png",
+  "createdAt": {
+    "$date": "2020-07-28T12:55:36.355Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T12:55:36.355Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2026092abe30378033d06a"
+  },
+  "nombre": "Neymar",
+  "apellido": "Acosta",
+  "userID": {
+    "$oid": "5f201f18adf7cc13ac66e557"
+  },
+  "publicaciones": {
+    "categoria": "Construccion",
+    "tituloTrabajo": "Construcción de pisos y paredes",
+    "lugar": "San Miguelito",
+    "descripcion": "Realizo trabajos de gran calidad a bajo costo"
+  },
+  "file": "P8100150-1.jpg",
+  "createdAt": {
+    "$date": "2020-07-28T13:20:09.420Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T13:20:09.420Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f202897acbc28144c309bce"
+  },
+  "nombre": "Oscar",
+  "apellido": "Medina",
+  "userID": {
+    "$oid": "5f2027c7acbc28144c309bcd"
+  },
+  "publicaciones": {
+    "categoria": "Ebanisteria",
+    "tituloTrabajo": "Muebles artesanales de la Mejor calidad",
+    "lugar": "San Miguelito",
+    "descripcion": "Estoy vendiendo muebles con madera de roble traída desde la India..."
+  },
+  "file": "MUEBLE DE MADERA 2.40M RICONERA 2.50X2.20M O ALARGADO 3.50M.JPG",
+  "createdAt": {
+    "$date": "2020-07-28T13:31:03.053Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T13:31:03.053Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f202c4dacbc28144c309bcf"
+  },
+  "nombre": "Oscar",
+  "apellido": "Medina",
+  "userID": {
+    "$oid": "5f2027c7acbc28144c309bcd"
+  },
+  "publicaciones": {
+    "categoria": "Ebanisteria",
+    "tituloTrabajo": "Juego de Mesa para la sala con acabados según el cliente",
+    "lugar": "San Miguelito",
+    "descripcion": "Estoy vendiendo mesas para la sala, a bajo costo, si desea más información puede llamarme."
+  },
+  "file": "D293-15-01(2)-LF-DOWN.jpg",
+  "createdAt": {
+    "$date": "2020-07-28T13:46:53.146Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T13:46:53.146Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f203f92b36c2602e866e789"
+  },
+  "nombre": "Gilberto",
+  "apellido": "Escobar",
+  "userID": {
+    "$oid": "5f203d9bca6a7e357057761b"
+  },
+  "publicaciones": {
+    "categoria": "Mecanica",
+    "tituloTrabajo": "Brindo mantenimiento para autos de doble tracción",
+    "lugar": "Panamá",
+    "descripcion": "Contactarme para mayor información."
+  },
+  "file": "gsdffdb.png",
+  "createdAt": {
+    "$date": "2020-07-28T15:09:06.407Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T15:09:06.407Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2054190b0ca23310007c0e"
+  },
+  "nombre": "Gilberto",
+  "apellido": "Morales",
+  "userID": {
+    "$oid": "5f203d9bca6a7e357057761b"
+  },
+  "publicaciones": {
+    "categoria": "Plomeria",
+    "lugar": "San Miguelito",
+    "tituloTrabajo": "Mantenimiento de tuberías",
+    "descripcion": "Reparo tuberías"
+  },
+  "file": "rgfgdgdf.png",
+  "createdAt": {
+    "$date": "2020-07-28T16:36:41.792Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T17:05:52.847Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f205c7bbc234026d0fdeec0"
+  },
+  "nombre": "Gilberto",
+  "apellido": "Escobar",
+  "userID": {
+    "$oid": "5f203d9bca6a7e357057761b"
+  },
+  "publicaciones": {
+    "categoria": "Ebanisteria",
+    "lugar": "Taboga",
+    "tituloTrabajo": "Barnizo puertas y mesas",
+    "descripcion": "Todo al mejor precio del país."
+  },
+  "file": "Como-arreglar-una-puerta-que-no-cierra.jpg",
+  "createdAt": {
+    "$date": "2020-07-28T17:12:27.650Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T17:21:36.133Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f206a1e7815653570f39f50"
+  },
+  "nombre": "Rene",
+  "apellido": "De",
+  "userID": {
+    "$oid": "5f2069e67815653570f39f4f"
+  },
+  "publicaciones": {
+    "categoria": "Mecanica",
+    "tituloTrabajo": "Reparo Autos",
+    "lugar": "San Miguelito",
+    "descripcion": "Precios bajos."
+  },
+  "file": "ergebr9399bn4u3b9483.png",
+  "createdAt": {
+    "$date": "2020-07-28T18:10:38.310Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T18:10:38.310Z"
+  },
+  "__v": 0
+}]

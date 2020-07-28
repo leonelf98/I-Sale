@@ -1,0 +1,162 @@
+[{
+  "_id": {
+    "$oid": "5f2014ce7a0fb4063005a076"
+  },
+  "email": "robertoe@gmail.com",
+  "nombre": "Roberto",
+  "apellido": "Espinoza",
+  "password": "$2a$10$iZ7Ls2iMhRcuxNE3iAVKwuxfRQuypPfjxarX.73JIj9jsCW/QnjtG",
+  "telefono": "2-123-4321",
+  "trabajo": "si",
+  "servicio": {
+    "cedula": "8-1234-123",
+    "areaTrabajo": [
+      "Mecanica",
+      ""
+    ],
+    "zonaTrabajo": "Panamá"
+  },
+  "file": "1.png",
+  "desc": "Brindo servicios de mecánica.",
+  "createdAt": {
+    "$date": "2020-07-28T12:06:38.646Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T12:06:38.646Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f201f18adf7cc13ac66e557"
+  },
+  "email": "neymara@gmail.com",
+  "nombre": "Neymar",
+  "apellido": "Acosta",
+  "password": "$2a$10$Z.4RmzmFyBVdDrM0tyNB5.snbHSvxiPir43KVzwXYBPxWqcaGP.5q",
+  "telefono": "6-456-1234",
+  "trabajo": "si",
+  "servicio": {
+    "cedula": "7-675-3452",
+    "areaTrabajo": [
+      "Plomeria",
+      "Construccion",
+      ""
+    ],
+    "zonaTrabajo": "Panamá"
+  },
+  "file": "dfsdfsdf.png",
+  "desc": "Tengo conocimiento es construcción y plomeria",
+  "createdAt": {
+    "$date": "2020-07-28T12:50:32.607Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T12:50:32.607Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2027c7acbc28144c309bcd"
+  },
+  "email": "oscarm@gmail.com",
+  "nombre": "Oscar",
+  "apellido": "Medina",
+  "password": "$2a$10$oE.J7mVIh7txGBHjq4QY.Ow0lsg9ySp0yX4mRAzexrj9hryEYszuS",
+  "telefono": "6-789-2345",
+  "trabajo": "si",
+  "servicio": {
+    "cedula": "8-234-8765",
+    "areaTrabajo": [
+      "Ebanisteria",
+      ""
+    ],
+    "zonaTrabajo": "San Miguelito"
+  },
+  "file": "fdbfbd.png",
+  "desc": "Soy artesano, fabrico muebles y otras artesanías...",
+  "createdAt": {
+    "$date": "2020-07-28T13:27:36.019Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T13:27:36.019Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f203d9bca6a7e357057761b"
+  },
+  "email": "gilbertoe@gmail.com",
+  "nombre": "Gilberto",
+  "apellido": "Escobar",
+  "password": "$2a$10$ceUvwvUZWe0.p4RJ2g8D6.CzqfJRoLYT8B0W0CGxAuNjbdU7op9oq",
+  "telefono": "6-432-5439",
+  "trabajo": "si",
+  "servicio": {
+    "cedula": "3-678-4327",
+    "areaTrabajo": [
+      "Mecanica",
+      "Construccion",
+      ""
+    ],
+    "zonaTrabajo": "Panamá"
+  },
+  "file": "mecanico-sonriente-brazos-cruzados-llave-inglesa_1170-1699.jpg",
+  "desc": "Realizo trabajos de mecánica y construcción. ",
+  "createdAt": {
+    "$date": "2020-07-28T15:00:43.348Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T17:25:20.991Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f2069e67815653570f39f4f"
+  },
+  "email": "rened@gmail.com",
+  "nombre": "Rene",
+  "apellido": "De leon",
+  "password": "$2a$10$gukZjlcyJoikG44K30N72uz1NjV9vsG1O6EFoJqD6tBs0uhBHsw5m",
+  "telefono": "6-4567-1237",
+  "trabajo": "si",
+  "servicio": {
+    "cedula": "8-9087-4532",
+    "areaTrabajo": [
+      "Mecanica",
+      ""
+    ],
+    "zonaTrabajo": "San Miguelito"
+  },
+  "file": "7717_900.jpg",
+  "desc": "Ofrezco servicios de mecánica.",
+  "createdAt": {
+    "$date": "2020-07-28T18:09:43.003Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T18:09:43.003Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f206a947815653570f39f51"
+  },
+  "email": "leonelfj02@gmail.com",
+  "nombre": "Leonel",
+  "apellido": "Franco",
+  "password": "$2a$10$AIfdddXjVjLw2a94fXXgmu/gTdAQm48WLgIcqbsoAM5zjtidFQXny",
+  "telefono": "6-7689-0265",
+  "trabajo": "no",
+  "servicio": {
+    "cedula": "",
+    "areaTrabajo": "",
+    "zonaTrabajo": ""
+  },
+  "file": "ttghenerv934nuv9u34.png",
+  "desc": "Hola",
+  "createdAt": {
+    "$date": "2020-07-28T18:12:36.399Z"
+  },
+  "updatedAt": {
+    "$date": "2020-07-28T18:12:36.399Z"
+  },
+  "__v": 0
+}]

@@ -88,13 +88,22 @@ app.get('/usuarioInfo', passportConfig.estaAutenticado, (req, res) => {
 app.get('/logout', passportConfig.estaAutenticado, controladorUsuario.logout);
 
 //MUESTRA EL HOME
-  app.get('/', function(req, res){
-      res.type('text/html');
-      var session = req.user;
-      res.render('index', {session},
-      function(err, html){
-          if(err) throw err;
-          res.send(html);
+app.get('/', function(req, res){
+
+    let perPage = 9;
+    let page = req.params.page || 1;
+    var session = req.user;
+
+    Work
+      .find({}) // finding all documents
+      .skip((perPage * page) - perPage) // in the first page the value of the skip is 0
+      .limit(perPage) // output just 9 items
+      .exec((err, works) => {
+          if (err) return next(err);
+          res.render('index', {
+            session,
+            works,
+          });
       });
   });
 
@@ -217,7 +226,7 @@ app.get('/Conf', function(req, res){
 
 app.get('/Category/:page', (req, res) => {
   console.log(req.query.v1);
-  let perPage = 6;
+  let perPage = 3;
   let page = req.params.page || 1;
   var session = req.user;
   var qwery = { "publicaciones.categoria" : req.query.v1 };
@@ -240,26 +249,6 @@ app.get('/Category/:page', (req, res) => {
     });
 });
 
-//MUESTRA el perfil del trabajador
-app.get('/PerfilView', function(req, res){
-    var qwery1 = { "_id" : req.query.dp }; //CONSULTA PARA LA TABLA DE TRABAJOS
-    var qwery2 = { "_id" : req.query.du }; //CONSULTA PARA LA TABLA DE USUARIOS
-    Work
-      .find(qwery1) // finding all documents
-      .exec((err, works) => {
-        Usuario
-          .find(qwery2) // finding all documents
-          .exec((err, usuarios) => {
-            res.type('text/html');
-            var session = req.user;
-            userDu = usuarios[0];
-            res.render('partes/perfilView', {session, works, userDu});
-
-          });
-
-      });
-});
-
 //MUESTRA EL PERFILO DE LOS DUEÑOS DE LA PAGINA
 app.get('/Perfil_autor', function(req, res){
     var ceDe = req.query.ce;
@@ -273,6 +262,54 @@ app.get('/Perfil_autor', function(req, res){
 });
 
 
+app.get('/editPublicacion', function(req, res){
+      var wd = req.query.wd;
+      res.type('text/html');
+      var session = req.user;
+      res.render('partes/editPublicacion', {session, wd});
+});
+
+
+app.post('/EditarPublicacion', upload2.single('file'), (req, res) => {
+  var wd = req.body.id;
+  console.log(wd);
+  var session = req.user;
+  Work.findByIdAndUpdate(wd, {
+    publicaciones:{
+        categoria : req.body.categoria,
+        lugar : req.body.lugar,
+        tituloTrabajo : req.body.tituloTrabajo,
+        descripcion : req.body.descripcion
+      },
+      file : req.file.originalname
+  }, (error, work) => {
+    console.log(console.log(error),
+    res.render('partes/editPublicacion', {session, wd})
+  )
+  })
+
+})
+
+
+//EDITAR LO DATOS DEL USUARIO
+app.post('/editp', (req, res) => {
+
+  var userID = req.body.id;
+  console.log(userID);
+  var session = req.user;
+  Usuario.findByIdAndUpdate(userID, {
+    nombre : req.body.nombre,
+    apellido : req.body.apellido,
+    email : req.body.email,
+    telefono : req.body.telefono
+  }, (error, usuario) => {
+    console.log(console.log(error),
+    res.render('partes/conf', {session})
+  )
+  })
+
+})
+
 
 app.get('/PerfilView', function(req, res){
     var ceDe = { "_id" : req.query.dp }; //CONSULTA PARA LA TABLA DE TRABAJOS
@@ -280,6 +317,9 @@ app.get('/PerfilView', function(req, res){
             var session = req.user;
             res.render('partes/perfil_autor', {session, ceDe});
 });
+
+
+
 
 
 //Error 404

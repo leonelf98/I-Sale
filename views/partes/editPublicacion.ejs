@@ -1,0 +1,65 @@
+<%- include ('header', {session}); %>
+<br><br>
+<body>
+    <div class="container">
+        <h1>Editar Publicación</h1><br>
+        <hr>
+        <form action="/EditarPublicacion" method="POST" id="form" onsubmit="Valida(this)" enctype="multipart/form-data">
+            <div class="form-group">
+              <label>Categoria</label>
+              <select name="categoria" class="form-control col-md-6">
+                <option selected>Seleccione...</option>
+                <option value="Ebanisteria">Ebanisteria</option>
+                <option value="Construccion">Construccion</option>
+                <option value="Plomeria">Plomeria</option>
+                <option value="Mecanica">Mecanica</option>
+              </select>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-6">
+                    <label>Titulo</label>
+                    <input type="text" name="tituloTrabajo" class="form-control" placeholder="Aqui va el nombre de tu publicacion...">
+                </div>
+            </div>
+            <div class="form-group">
+              <label>Ubicación</label>
+              <select name="lugar"  class="form-control col-md-6">
+                <option selected>Seleccione...</option>
+                <option value="Panamá">Panamá</option>
+                <option value="San Miguelito">San Miguelito</option>
+                <option value="Taboga">Taboga</option>
+                <option value="Arraiján">Arraiján</option>
+                <option value="Capira">Capira</option>
+                <option value="Chame">Chame</option>
+                <option value="La Chorerra">La Chorerra</option>
+                <option value="San Carlos">San Carlos</option>
+                <option value="Chagre">Chagre</option>
+                <option value="Colón">Colón</option>
+                <option value="Donoso">Donoso</option>
+                <option value="Portobelo">Portobelo</option>
+                <option value="Santa Isabel">Santa Isabel</option>
+                </select>
+            </div>
+            <div class="form-row ">
+                <div class="form-group col-md-6">
+                    <label>Descripción</label>
+                    <textarea name="descripcion" id="" cols="70" rows="6.7"></textarea><br>
+                </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlFile1">Foto de Perfil:</label>
+              <input type="file" class="form-control-file" id="file" name="file" required>
+            </div>
+             <div class="form-group"  style="display:none;">
+                 <input type="text" name="id" value=<%= wd %> >
+              </div>
+            <button type="submit" class="btn btn-primary">Publicar</button>
+        </form>
+    </div><br>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="../public/jquery/jquery.min.js"></script>
+    <script src="../public/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+<%- include ('footer') %>
