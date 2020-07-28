@@ -18,15 +18,26 @@ const passportConfig = require('./config/passport');
 const Usuario = require('./models/user'); // importa el esquema
 const Work = require('./models/work'); // importa el esquema
 
-const storage = multer.diskStorage({
+const storage1 = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, 'public/subidas/')
+    cb(null, 'public/subidas/perfil/')
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname)
   }
 })
-const upload = multer({ storage })
+const upload1 = multer({ storage: storage1 })
+
+const storage2 = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/subidas/portada/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  }
+})
+const upload2 = multer({ storage: storage2 })
+
 
 //Hay que indicarle a node que view engine se va a usar
 app.set('view engine', 'ejs');
@@ -60,7 +71,7 @@ const controladorUsuario = require('./controladores/usuario');
 const controladorTrabajo = require('./controladores/trabajo');
 
 //REGISTRAR UN NUEVO USUARIO
-app.post('/add', upload.single('file'), controladorUsuario.postSignup);
+app.post('/add', upload1.single('file'), controladorUsuario.postSignup);
 
 //LOGIN DE UN USUARIO EXISTENTE
 app.post('/login2', controladorUsuario.postLogin);
@@ -88,7 +99,7 @@ app.get('/logout', passportConfig.estaAutenticado, controladorUsuario.logout);
   });
 
 //REGISTRAR UNA NUEVA PUBLICACION - SE ACTIVA CUANDO PRESIONAS ENVIAR EN EL FORMULARIO DE PUBLICACION
-app.post('/addCatg', upload.single('file'), controladorTrabajo.postRegistrar);
+app.post('/addCatg', upload2.single('file'), controladorTrabajo.postRegistrar);
 
 
 
